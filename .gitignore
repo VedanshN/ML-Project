@@ -1,6 +1,6 @@
-~/venv/
-~/migrations/
-~/__pycache__/
+venv/
+migrations/
+__pycache__/
 *.pyc
 *.pyo
 *.env
