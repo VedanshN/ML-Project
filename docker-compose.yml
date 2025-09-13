@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - "5432:5432" # Optional: Expose port to connect from your local machine
+    restart: always
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:6900
+    volumes:
+      - .:/app
+    ports:
+      - "6900:6900"
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  postgres_data:

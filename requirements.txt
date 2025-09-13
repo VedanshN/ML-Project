@@ -1,0 +1,10 @@
+Django
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+psycopg2-binary
+django-environ
+django-storages==1.14.2
+openai
+numpy
+pandas
